@@ -8,9 +8,7 @@ import Footer from "../components/Footer";
 export default function App() {
   return (
     <div className="text-3xl font-bold">
-      <nav>
-        <NavBar />
-      </nav>
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { ShapeSet, Sparkles } from "./GeaometryShapes";
 
 const HeroSectionGrid = ({
   className = "",
   autoRotate = true,
-  rotationInterval = 3000,
+  rotationInterval = 2000,
 }) => {
   const categories = [
     {
@@ -52,137 +53,113 @@ const HeroSectionGrid = ({
     return () => clearInterval(interval);
   }, [autoRotate, rotationInterval, categories.length]);
 
-  // Decorative triangular shapes
-  const decorativeShapes = [
-    {
-      color: "bg-blue-300",
-      size: "w-16 h-16",
-      position: "top-10 left-10",
-      rotation: "rotate-45",
-    },
-    {
-      color: "bg-pink-300",
-      size: "w-12 h-12",
-      position: "top-20 right-32",
-      rotation: "-rotate-12",
-    },
-    {
-      color: "bg-yellow-300",
-      size: "w-20 h-20",
-      position: "bottom-32 left-20",
-      rotation: "rotate-12",
-    },
-    {
-      color: "bg-green-300",
-      size: "w-14 h-14",
-      position: "bottom-16 right-40",
-      rotation: "rotate-45",
-    },
-    {
-      color: "bg-purple-300",
-      size: "w-10 h-10",
-      position: "top-40 left-40",
-      rotation: "-rotate-45",
-    },
-    {
-      color: "bg-indigo-300",
-      size: "w-8 h-8",
-      position: "bottom-40 left-60",
-      rotation: "rotate-30",
-    },
-  ];
-
-  // Sparkle elements
-  const sparkles = [
-    { position: "top-16 right-16", size: "w-6 h-6" },
-    { position: "bottom-24 left-32", size: "w-4 h-4" },
-    { position: "top-32 left-24", size: "w-5 h-5" },
-    { position: "bottom-12 right-20", size: "w-3 h-3" },
-  ];
-
   return (
-    <div className={`relative overflow-hidden min-h-[600px] ${className}`}>
-      <div className="relative h-full min-h-[600px]">
-        {/* Decorative Background Shapes */}
-        {decorativeShapes.map((shape, index) => (
-          <div
-            key={index}
-            className={`absolute ${shape.size} ${shape.color} ${shape.position} ${shape.rotation} opacity-60 rounded-lg transform transition-all duration-500`}
-          />
-        ))}
+    <div className={`relative w-full h-[600px] ${className}`}>
+      {/* Decorative Background Shapes */}
+      <ShapeSet variant="hero" />
 
-        {/* Sparkle Elements */}
-        {sparkles.map((sparkle, index) => (
-          <div key={index} className={`absolute ${sparkle.position} z-20`}>
-            <svg
-              className={`${sparkle.size} text-yellow-400 animate-pulse`}
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-          </div>
-        ))}
+      {/* Sparkle Elements */}
+      <Sparkles count={4} />
 
-        {/* Dynamic Images and Labels */}
-        {categories.map((category, index) => (
+      {/* Healthcare - Top Right */}
+      <div className="absolute top-2 right-46 z-20">
+        <div className="relative">
           <div
-            key={category.id}
-            className={`absolute transition-all duration-1000 ease-in-out z-10 ${
-              index === activeCategory
-                ? "opacity-100 scale-100"
-                : "opacity-30 scale-95"
+            className={`${
+              activeCategory === 1 ? "bg-teal-600" : "bg-gray-700"
+            } text-white px-4 py-2 rounded-full text-sm font-semibold mb-3 inline-block shadow-lg transition-all duration-500 ${
+              activeCategory === 1 ? "scale-110" : "scale-100"
             }`}
-            style={category.position}
           >
-            {/* Category Label */}
-            <div
-              className={`${category.color} ${
-                category.textColor
-              } px-4 py-2 rounded-full text-sm font-semibold mb-4 inline-block shadow-lg transform transition-all duration-500 ${
-                index === activeCategory ? "scale-110" : "scale-100"
-              }`}
-            >
-              {category.name}
-            </div>
-
-            {/* Professional Image */}
-            <div className="relative">
-              <img
-                src={category.image}
-                alt={`${category.name} professional`}
-                className={`rounded-lg shadow-xl transition-all duration-1000 ${
-                  index === activeCategory ? "scale-105" : "scale-100"
-                } ${
-                  category.id === "business" ? "w-80 h-60" : "w-48 h-64"
-                } object-cover`}
-              />
-
-              {/* Image overlay effect */}
-              <div
-                className={`absolute inset-0 rounded-lg transition-all duration-1000 ${
-                  index === activeCategory
-                    ? "bg-linear-to-t from-black/20 to-transparent"
-                    : "bg-gray-500/40"
-                }`}
-              />
-            </div>
+            Healthcare
           </div>
-        ))}
+          <img
+            src="/api/placeholder/200/240"
+            alt="Healthcare professional"
+            className={`w-48 h-60 rounded-2xl object-cover shadow-xl transition-all duration-500 ${
+              activeCategory === 1 ? "scale-105" : "scale-100"
+            }`}
+          />
+        </div>
+      </div>
 
-        {/* Manual Controls (Optional) */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30">
-          {categories.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveCategory(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === activeCategory
-                  ? "bg-blue-600 scale-125"
-                  : "bg-gray-400 hover:bg-gray-600"
-              }`}
-            />
-          ))}
+      {/* Accounting - Top Left */}
+      <div className="absolute top-36 left-4 z-20">
+        <div className="relative">
+          <div
+            className={`${
+              activeCategory === 0 ? "bg-blue-800" : "bg-gray-700"
+            } text-white px-4 py-2 rounded-full text-sm font-semibold mb-3 inline-block shadow-lg transition-all duration-500 ${
+              activeCategory === 0 ? "scale-110" : "scale-100"
+            }`}
+          >
+            Accounting
+          </div>
+          <img
+            src="/api/placeholder/200/240"
+            alt="Accounting professional"
+            className={`w-48 h-60 rounded-2xl object-cover shadow-xl transition-all duration-500 ${
+              activeCategory === 0 ? "scale-105" : "scale-100"
+            }`}
+          />
+        </div>
+      </div>
+
+      {/* Business - Center (Laptop) */}
+      <div className="absolute bottom-0 right-46 z-30">
+        <div className="relative">
+          <div
+            className={`${
+              activeCategory === 2 ? "bg-orange-300" : "bg-gray-700"
+            } text-white px-4 py-2 rounded-full text-sm font-semibold mb-3 inline-block shadow-lg transition-all duration-500 ${
+              activeCategory === 2 ? "scale-110" : "scale-100"
+            }`}
+          >
+            Business
+          </div>
+          <img
+            src="/api/placeholder/320/200"
+            alt="Business laptop with analytics"
+            className={`w-48 h-60 rounded-2xl object-cover shadow-xl transition-all duration-500 ${
+              activeCategory === 2 ? "scale-105" : "scale-100"
+            }`}
+          />
+        </div>
+      </div>
+
+      {/* Tech - Bottom Right */}
+      <div className="absolute bottom-36 right-4 z-20">
+        <div className="relative">
+          <div
+            className={`${
+              activeCategory === 3 ? "bg-red-600" : "bg-gray-700"
+            } text-white px-4 py-2 rounded-full text-sm font-semibold mb-3 inline-block shadow-lg transition-all duration-500 ${
+              activeCategory === 3 ? "scale-110" : "scale-100"
+            }`}
+          >
+            Tech
+          </div>
+          <img
+            src="/api/placeholder/200/240"
+            alt="Tech professional with VR"
+            className={`w-48 h-60 rounded-2xl object-cover shadow-xl transition-all duration-500 ${
+              activeCategory === 3 ? "scale-105" : "scale-100"
+            }`}
+          />
+        </div>
+      </div>
+
+      {/* Central Dynamic Image Display */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40">
+        <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+          <img
+            src={categories[activeCategory].image}
+            alt={`${categories[activeCategory].name} professional`}
+            className="w-50 h-50 object-cover transition-all duration-1000"
+          />
+
+          {/* Image overlay with category color */}
+          <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent transition-all duration-500" />
         </div>
       </div>
     </div>
