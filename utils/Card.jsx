@@ -13,7 +13,7 @@ const Card = ({
 }) => {
   // Default icon if none provided
   const DefaultIcon = () => (
-    <div className="w-16 h-16 bg-linear-to-br from-gray-800 to-gray-600 rounded-lg flex items-center justify-center mb-6">
+    <div className="w-12 h-12 bg-linear-to-br from-gray-800 to-gray-600 rounded-lg flex items-center justify-center mb-6">
       <div className="grid grid-cols-2 gap-1">
         <div className="w-3 h-3 bg-white rounded-sm"></div>
         <div className="w-3 h-3 bg-blue-600 rounded-sm"></div>
@@ -25,7 +25,7 @@ const Card = ({
 
   return (
     <div
-      className={`bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 ${className}`}
+      className={`w-70 bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 ${className}`}
     >
       {/* Title */}
       <h3 className={`text-2xl font-bold mb-4 ${titleColor}`}>{title}</h3>
@@ -36,17 +36,17 @@ const Card = ({
       </p>
 
       {/* Icon */}
-      <div className="mb-6">{icon ? icon : <DefaultIcon />}</div>
+      {/* <div className="mb-6">{icon ? icon : <DefaultIcon />}</div> */}
 
       {/* Button */}
-      {showButton && (
+      {/* {showButton && (
         <Button
           text={buttonText}
           onClick={onButtonClick}
           size="md"
           className="w-auto"
         />
-      )}
+      )} */}
     </div>
   );
 };

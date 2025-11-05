@@ -1,14 +1,111 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/App.css" />
-    <title>medical-college-landing-page</title>
+
+    <!-- PWA Manifest -->
+    <!-- <link rel="manifest" href="/manifest.json" /> -->
+    <meta name="theme-color" content="#1e3a8a" />
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Miles Education - Inspiring & Enabling Talent to Achieve Their Highest Potential. Professional education programs in Accounting, Healthcare, Business, and Technology."
+    />
+    <meta
+      name="keywords"
+      content="Miles Education, professional education, accounting, healthcare, business, technology, career development"
+    />
+    <meta name="author" content="Miles Education" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="Miles Education - Shaping Tomorrow with an Edge in Education"
+    />
+    <meta
+      property="og:description"
+      content="Working backwards from industry shortages, skill gaps and opportunities to set talent up for success."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourdomain.com" />
+    <meta property="og:image" content="/og-image.jpg" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Miles Education - Professional Education Programs"
+    />
+    <meta
+      name="twitter:description"
+      content="Inspiring & Enabling Talent to Achieve Their Highest Potential"
+    />
+    <meta name="twitter:image" content="/twitter-image.jpg" />
+
+    <!-- Critical Resource Optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preload critical CSS -->
+    <link
+      rel="preload"
+      href="/src/App.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript><link rel="stylesheet" href="/src/App.css" /></noscript>
+
+    <!-- Preload hero images for faster LCP -->
+    <link rel="preload" href="/api/placeholder/300/400" as="image" />
+    <link rel="preload" href="/api/placeholder/400/300" as="image" />
+
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//api.placeholder.com" />
+
+    <!-- Critical CSS inline (will improve FCP) -->
+    <style>
+      /* Critical above-the-fold styles */
+      body {
+        margin: 0;
+        font-family: var(--font-work-sans), system-ui, sans-serif;
+        font-display: swap;
+      }
+      .loading-skeleton {
+        background: linear-gradient(
+          90deg,
+          #f0f0f0 25%,
+          #e0e0e0 50%,
+          #f0f0f0 75%
+        );
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+      }
+      @keyframes loading {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
+      .hero-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+      }
+      * {
+        font-display: swap;
+      }
+    </style>
+
+    <title>Miles Education - Shaping Tomorrow with an Edge in Education</title>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.jsx" defer></script>
   </body>
 </html>
