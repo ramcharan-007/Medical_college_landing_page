@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import BgGrid from "../../utils/bgGrid";
 import Button from "../../utils/Button";
@@ -7,55 +7,54 @@ import GridImage from "../../utils/GridImage";
 import HeroSectionGrid from "../../utils/HeroSectionGrid";
 import AlumniCard from "../../utils/AlumniCard";
 import GeometryShapes from "../../utils/GeaometryShapes";
+import DoctorsSvg from "../assets/Doctors-bro.svg";
+import JourneyFlow from "../components/JourneyTimeLine";
 
-const Home = () => {
+const Home = memo(() => {
   return (
     <div className="p-0 m-0">
       <div className="p-0 m-0">
         <BgGrid>
           <div className="min-h-screen flex flex-col items-center justify-center p-8">
-            <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
               {/* Left Content */}
-              <div className="space-y-8 ">
+              <div className="space-y-8 lg:col-span-2">
                 {/* Main Heading */}
                 <div className="space-y-4">
                   <h1 className="md:text-[36px]  text-5xl lg:text-4xl font-black text-gray-900 leading-tight">
-                    <span className="font-black relative pt-5 pl-5">
+                    <span className="font-black relative pt-5 pl-0">
                       <GeometryShapes
                         shape="star"
                         size="w-8 h-8"
                         color="text-yellow-400"
                         className="absolute top-0 left-0"
                       />
-                      Shaping Tomorrow with an
+                      Start your U.S. MBBS
                     </span>
                     <br />
-                    <span className="text-black font-black text-6xl pl-5">
-                      Edge in
+                    <span className="text-black font-black text-6xl pl-0">
+                      Journey with
                     </span>
                     <br />
-                    <span className="text-black font-black text-6xl pl-5">
-                      Education
+                    <span className="text-black font-black text-6xl pl-0">
+                      Aureus University
                     </span>
                   </h1>
                 </div>
 
                 {/* Subheading */}
-                <div className="space-y-2 pl-5">
+                <div className="space-y-2 pl-0">
                   <p className="text-xl text-gray-700">
-                    Working backwards from{" "}
+                    5-Year Global{" "}
                     <span className="text-blue-600 font-semibold">
-                      industry <br />
-                      shortages
+                      Medical Program <br />
+                      with
                     </span>
                     ,{" "}
                     <span className="text-blue-600 font-semibold">
-                      skill gaps
+                      U.S. Clinical Training
                     </span>{" "}
-                    and opportunities to
-                    <br />{" "}
                     <span className="relative pr-5">
-                      set talent up for success
                       <GeometryShapes
                         shape="star"
                         size="w-8 h-8"
@@ -78,8 +77,8 @@ const Home = () => {
                 </div>
 
                 {/* CTA Button */}
-                <div className="flex items-center space-x-4 pl-5">
-                  <Button variant="primary">
+                <div className="flex items-center space-x-4 pl-0">
+                  <Button text="Explore more" variant="primary">
                     <svg
                       className="w-5 h-5"
                       fill="none"
@@ -93,31 +92,37 @@ const Home = () => {
                         d="M13 7l5 5m0 0l-5 5m5-5H6"
                       />
                     </svg>
-                    <span>Learn More</span>
                   </Button>
                 </div>
               </div>
 
               {/* Right Content - Hero Images */}
-              <div className="relative">
-                <HeroSectionGrid />
+              <div className="relative flex items-center justify-center lg:col-span-3">
+                <div className="relative">
+                  <img
+                    src={DoctorsSvg}
+                    alt="Medical professionals illustration"
+                    className="w-[700px] h-[700px] object-contain drop-shadow-2xl"
+                  />
+                </div>
               </div>
             </div>
             <div className="w-full max-w-7xl mt-16 justify-center flex flex-col gap-10 items-center py-20">
               <h2 className="text-4xl underline decoration-orange-400 underline-offset-8 decoration-4">
-                The Problem Statements
+                Why Choose Aureus ?
               </h2>
               <div className="flex gap-8">
-                <Card title="Accounting" />
-                <Card title="Healthcare" />
-                <Card title="Business" />
-                <Card title="Technology" />
+                <Card title="Personalized Classes" />
+                <Card title="Experienced Faculty" />
+                <Card title="Affordable Tuition" />
+                <Card title="Ideal Location" />
+                <Card title="Unique Experience" />
               </div>
             </div>
           </div>
         </BgGrid>
 
-        <div className="bg-gray-900  inset-0 rounded-tl-4xl rounded-tr-4xl flex flex-col item-center justify-center w-full">
+        {/* <div className="bg-gray-900  inset-0 rounded-tl-4xl rounded-tr-4xl flex flex-col item-center justify-center w-full">
           <div className="flex items-center justify-center py-16">
             <h3 className="text-4xl text-white underline decoration-orange-400 underline-offset-8 decoration-4">
               Solution Showcase
@@ -288,11 +293,21 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </div>
-        <BgGrid></BgGrid>
+        </div> */}
+        <BgGrid>
+          <div className="flex items-center justify-center flex-col  bg-blue-900">
+            <h2 className="mb-10 text-4xl underline decoration-orange-400 underline-offset-8 decoration-4">
+              Medical Education Pathway to Residency
+            </h2>
+            <p className="text-lg text-white">
+              From Basic Sciences to Residency: Your Path to Becoming a Doctor
+            </p>
+            <JourneyFlow />
+          </div>
+        </BgGrid>
       </div>
     </div>
   );
-};
+});
 
 export default Home;
